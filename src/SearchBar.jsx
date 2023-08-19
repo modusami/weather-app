@@ -1,19 +1,19 @@
 function SearchBar({ location, handleChange, onSearchButton, showDropDown, filteredResults }) {
 	return (
 		<>
-			<div id="searchBar" className="container">
+			<div id="searchBar" className="container-fluid">
 				<div className="row g-0">
-					<div className="col-1 text-center">
-						<span id="searchIconSpan" className="text-center d-block">
+					<div className="col-2 d-flex justify-content-end">
+						<span id="searchIconSpan" className="">
 							<i className="fa-solid fa-search"></i>
 						</span>
 					</div>
-					<div id="searchBarInput" className="col-10">
+					<div id="searchBarInput" className="col-9">
 						<input
 							type="text"
 							placeholder="Enter a city..."
 							value={location}
-							className="form-control w-100"
+							className=" w-100"
 							onChange={handleChange}
 						/>
 						{showDropDown && (
