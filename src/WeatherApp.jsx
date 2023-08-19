@@ -1,10 +1,10 @@
-function WeatherApp({ img, temp = "0.0", scaleF, location }) {
+function WeatherApp({ img, temp, scaleF, location }) {
 	return (
 		<>
 			<div id="weatherApp" className="container border">
 				<div className="row">
 					<div className="col-12 text-center fs-3">
-						<span className="temp">{temp ? temp : "0.0"}</span>{" "}
+						<span className="temp">{temp ? temp : "0"}</span>{" "}
 						<span className="scale">{scaleF ? "F" : "C"}</span>
 					</div>
 				</div>
