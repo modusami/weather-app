@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import WeatherApp from "./WeatherApp";
+import { cities } from "./data/cities";
 
 // all images to use
 import cloudy from "./assets/cloudy.svg";
@@ -17,39 +18,45 @@ function App() {
 	const weeatherImages = [cloudy, lighting, rain, snowing, sunny];
 	const [activeWeatherImg, setActiveWeatherImg] = useState(0);
 	const [searchDropdown, setShowSearchDropdown] = useState(false);
-	const cities = [
-		"New York City, USA",
-		"London, UK",
-		"Tokyo, Japan",
-		"Paris, France",
-		"Sydney, Australia",
-		"Beijing, China",
-		"Rio de Janeiro, Brazil",
-		"Cairo, Egypt",
-		"Moscow, Russia",
-		"Toronto, Canada",
-		"Mumbai, India",
-		"Berlin, Germany",
-		"Rome, Italy",
-		"Cape Town, South Africa",
-		"Patna, India",
-		"Kochi, India",
-	];
+	const data = cities;
 	const [filteredResults, setFilteredResults] = useState([]);
 
 	function handleOnChangeSearch(e) {
 		const input = e.target.value;
 		setLocation(input);
 
-		const filtered = cities.filter((result) =>
-			result.toLowerCase().includes(input.toLowerCase())
-		);
+		const filtered = Object.keys(data).reduce((accumulator, countryCode) => {
+			const countryCities = data[countryCode];
+			const filteredCountryCities = countryCities.filter((city) =>
+				city.toLowerCase().includes(input.toLowerCase())
+			);
+			return accumulator.concat(filteredCountryCities);
+		}, []);
 
 		setFilteredResults(filtered);
 	}
 
+	function findKeyByValue(obj, value) {
+		for (const key in obj) {
+			const arr = obj[key];
+			if (arr.includes(value)) {
+				return key;
+			}
+		}
+
+		return null;
+	}
+
+	function getGeocodes(city = "") {
+		const arrCity = city.split(",");
+		const newCity = arrCity[0]; // name of city
+		const cc = findKeyByValue(data, city);
+	}
+
 	const handleOnClickSearchButton = (e) => {
-		setActiveLocation(location);
+		const text = e.target.innerText;
+		setLocation("");
+		setActiveLocation(text);
 	};
 
 	useEffect(() => {
