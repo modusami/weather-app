@@ -51,6 +51,10 @@ function App() {
 		const arrCity = city.split(",");
 		const newCity = arrCity[0]; // name of city
 		const cc = findKeyByValue(data, city);
+
+		const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${newCity},,${cc}&limit=1&appid=7b91f0ba2b2ff6f044a5d5825e2e0dd7`;
+
+		return URL;
 	}
 
 	const handleOnClickSearchButton = (e) => {
@@ -83,6 +87,11 @@ function App() {
 						img={weeatherImages[activeWeatherImg]}
 					/>
 				</div>
+				<p>
+					<a href={getGeocodes(activeLocation)} target="__blank">
+						click
+					</a>
+				</p>
 			</div>
 		</>
 	);
