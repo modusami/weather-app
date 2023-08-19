@@ -20,6 +20,18 @@ body {
 	color: inherit;
 	background-color: inherit;
 	font-family: inherit;
+	min-height: 100vh;
+}
+
+#root {
+	color: inherit;
+	background-color: inherit;
+	font-family: inherit;
+	min-height: inherit;
+}
+
+#searchIconSpan {
+	cursor: pointer;
 }
 
 @media (prefers-color-scheme: light) {
