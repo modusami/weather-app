@@ -18,9 +18,8 @@
 
 body {
 	color: inherit;
-	background-color: inherit;
-	font-family: inherit;
 	min-height: 100vh;
+	font-family: "Poppins", sans-serif;
 }
 
 #root {
@@ -28,14 +27,29 @@ body {
 	background-color: inherit;
 	font-family: inherit;
 	min-height: inherit;
+	background: url("./assets/bgImage.jpeg");
+	background-size: cover;
+	background-position: center;
 }
 
 #searchIconSpan {
-	cursor: pointer;
+	background-color: #dbdbdb;
+	height: 100%;
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px;
 }
 
 #weatherDiv {
 	padding: 20px;
+}
+
+#tempRow {
+	color: rgb(0, 0, 0);
+	padding: 15px;
+	font-size: 52px;
 }
 
 #weatherApp {
@@ -45,6 +59,8 @@ body {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	background-color: rgb(255, 255, 255, 0.7);
+	border-radius: 8px;
 }
 
 img {
@@ -54,6 +70,15 @@ img {
 
 #searchBarInput {
 	position: relative;
+}
+
+#searchBarInput input {
+	border: 1px solid rgb(221, 221, 221);
+	outline: none;
+	padding: 10px;
+	font-weight: bold;
+	text-transform: capitalize;
+	font-size: 20px;
 }
 
 #searchDropDown {
@@ -67,7 +92,8 @@ img {
 	display: flex;
 	flex-direction: column;
 	overflow: scroll;
-	padding: 10px 0;
+	padding: 10px 5px;
+	transition: all 0.3s ease-in;
 }
 
 #searchDropDown p {
@@ -103,5 +129,9 @@ img {
 	#weatherApp {
 		width: 300px;
 		height: 400px;
+	}
+
+	#tempRow {
+		font-size: 32px;
 	}
 }
