@@ -9,7 +9,7 @@ function WeatherApp({ img, temp = "0.0", scaleF, location }) {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-12">
+					<div className="col-12 text-center">
 						<img
 							id="weatherImage"
 							src={
@@ -23,7 +23,7 @@ function WeatherApp({ img, temp = "0.0", scaleF, location }) {
 					</div>
 				</div>
 				<div className="row">
-					<div className="col-12 text-center">
+					<div className="col-12 d-flex align-items-end justify-content-center">
 						<h2>{location ? location : "Waiting..."}</h2>
 					</div>
 				</div>
