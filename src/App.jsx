@@ -10,7 +10,7 @@ function App() {
 				<div id="searchBarWrapper">
 					<SearchBar location={location} setLocation={setLocation} />
 				</div>
-				<p>{location}</p>
+				<div id="weatherWrapper"></div>
 			</div>
 		</>
 	);
