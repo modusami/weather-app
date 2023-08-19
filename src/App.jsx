@@ -53,8 +53,14 @@ function App() {
 	const [activeLocation, setActiveLocation] = useState("");
 	const [scaleF, setScale] = useState(true); // true meaning fahrenheit
 	const [temp, setTemp] = useState("0.0");
-	const weeatherImages = [cloudy, lighting, rain, snowing, sunny];
-	const [activeWeatherImg, setActiveWeatherImg] = useState(0);
+	const weeatherImages = {
+		Clouds: cloudy,
+		Rain: rain,
+		Snow: snowing,
+		Thunderstorm: lighting,
+		Clear: sunny,
+	};
+	const [activeWeatherImg, setActiveWeatherImg] = useState("Clouds");
 	const [searchDropdown, setShowSearchDropdown] = useState(false);
 	const data = cities;
 	const [filteredResults, setFilteredResults] = useState([]);
@@ -72,9 +78,9 @@ function App() {
 		try {
 			const response = await fetch(URL);
 			const responseData = await response.json();
-			const currentData = responseData["main"];
-			const tempF = currentData["temp"];
-			return tempF;
+			const tempF = responseData["main"]["temp"];
+			const weather = responseData["weather"][0]["main"];
+			return { temp: tempF, imgWeather: weather };
 		} catch (err) {
 			console.log(err);
 			return null;
@@ -112,7 +118,8 @@ function App() {
 				if (value === null && activeLocation !== "") {
 					alert("City Not Found");
 				} else {
-					setTemp(value);
+					setTemp(value.temp);
+					setActiveWeatherImg(value.imgWeather);
 				}
 			});
 		}
