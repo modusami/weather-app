@@ -4,11 +4,7 @@ function SearchBar({ location, handleChange, onSearchButton, showDropDown, filte
 			<div id="searchBar" className="container">
 				<div className="row g-0">
 					<div className="col-1 text-center">
-						<span
-							id="searchIconSpan"
-							className="text-center d-block"
-							onClick={onSearchButton}
-						>
+						<span id="searchIconSpan" className="text-center d-block">
 							<i className="fa-solid fa-search"></i>
 						</span>
 					</div>
@@ -23,7 +19,11 @@ function SearchBar({ location, handleChange, onSearchButton, showDropDown, filte
 						{showDropDown && (
 							<div id="searchDropDown">
 								{filteredResults.map((result, index) => {
-									return <p key={index}>{result}</p>;
+									return (
+										<p onClick={onSearchButton} key={index}>
+											{result}
+										</p>
+									);
 								})}
 							</div>
 						)}
