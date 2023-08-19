@@ -4,6 +4,8 @@ import WeatherApp from "./WeatherApp";
 
 function App() {
 	const [location, setLocation] = useState("");
+	const [scaleF, setScale] = useState(true); // true meaning fahrenheit
+	const [temp, setTemp] = useState("0.0");
 
 	return (
 		<>
@@ -12,7 +14,7 @@ function App() {
 					<SearchBar location={location} setLocation={setLocation} />
 				</div>
 				<div id="weatherWrapper">
-					<WeatherApp />
+					<WeatherApp location={location} scaleF={scaleF} temp={temp} />
 				</div>
 			</div>
 		</>
