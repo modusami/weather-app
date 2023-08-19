@@ -3,8 +3,8 @@ function SearchBar({ location, setLocation }) {
 		<>
 			<div id="searchBar" className="container">
 				<div className="row">
-					<div className="col-2 text-center">
-						<span className="text-center">
+					<div className="col text-center">
+						<span id="searchIconSpan" className="text-center">
 							<i className="fa-solid fa-search"></i>
 						</span>
 					</div>
