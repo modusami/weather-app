@@ -48,27 +48,6 @@ async function getGeocodes(city) {
 	}
 }
 
-async function getWeather() {
-	const coords = await getGeocodes(activeLocation);
-
-	if (coords === null) return null;
-
-	const LAT = coords["lat"];
-	const LONG = coords["long"];
-
-	const URL = `https://api.openweathermap.org/data/3.0/onecall?lat=${LAT}&lon=${LONG}&exclude=daily,hourly,alerts,minutely&units=imperial&appid=7b91f0ba2b2ff6f044a5d5825e2e0dd7`;
-
-	try {
-		const response = await fetch(URL);
-		const responseData = await response.json();
-		const currentData = responseData["current"];
-		const tempF = parseFloat(currentData["temp"]);
-		return tempF;
-	} catch (err) {
-		return null;
-	}
-}
-
 function App() {
 	const [location, setLocation] = useState("");
 	const [activeLocation, setActiveLocation] = useState("");
@@ -79,6 +58,28 @@ function App() {
 	const [searchDropdown, setShowSearchDropdown] = useState(false);
 	const data = cities;
 	const [filteredResults, setFilteredResults] = useState([]);
+
+	async function getWeather() {
+		const coords = await getGeocodes(activeLocation);
+
+		if (coords === null) return null;
+
+		const LAT = coords[0]["lat"];
+		const LONG = coords[0]["long"];
+
+		const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LONG}&units=imperial&&appid=7b91f0ba2b2ff6f044a5d5825e2e0dd7`;
+
+		try {
+			const response = await fetch(URL);
+			const responseData = await response.json();
+			const currentData = responseData["main"];
+			const tempF = currentData["temp"];
+			return tempF;
+		} catch (err) {
+			console.log(err);
+			return null;
+		}
+	}
 
 	function handleOnChangeSearch(e) {
 		const input = e.target.value;
@@ -104,6 +105,18 @@ function App() {
 	useEffect(() => {
 		location === "" ? setShowSearchDropdown(false) : setShowSearchDropdown(true);
 	}, [location]);
+
+	useEffect(() => {
+		if (activeLocation !== "") {
+			getWeather().then((value) => {
+				if (value === null && activeLocation !== "") {
+					alert("City Not Found");
+				} else {
+					setTemp(value);
+				}
+			});
+		}
+	}, [activeLocation]);
 
 	return (
 		<>
