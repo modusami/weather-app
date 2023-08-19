@@ -34,9 +34,25 @@ body {
 	cursor: pointer;
 }
 
+#weatherApp {
+	height: 500px;
+	width: 400px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 @media (prefers-color-scheme: light) {
 	:root {
 		color: #213547;
 		background-color: #ffffff;
+	}
+}
+
+@media screen and (max-width: 580px) {
+	#weatherApp {
+		width: 300px;
+		height: 400px;
 	}
 }
