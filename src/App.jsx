@@ -17,9 +17,35 @@ function App() {
 	const weeatherImages = [cloudy, lighting, rain, snowing, sunny];
 	const [activeWeatherImg, setActiveWeatherImg] = useState(0);
 	const [searchDropdown, setShowSearchDropdown] = useState(false);
+	const cities = [
+		"New York City, USA",
+		"London, UK",
+		"Tokyo, Japan",
+		"Paris, France",
+		"Sydney, Australia",
+		"Beijing, China",
+		"Rio de Janeiro, Brazil",
+		"Cairo, Egypt",
+		"Moscow, Russia",
+		"Toronto, Canada",
+		"Mumbai, India",
+		"Berlin, Germany",
+		"Rome, Italy",
+		"Cape Town, South Africa",
+		"Patna, India",
+		"Kochi, India",
+	];
+	const [filteredResults, setFilteredResults] = useState([]);
 
 	function handleOnChangeSearch(e) {
-		setLocation(e.target.value);
+		const input = e.target.value;
+		setLocation(input);
+
+		const filtered = cities.filter((result) =>
+			result.toLowerCase().includes(input.toLowerCase())
+		);
+
+		setFilteredResults(filtered);
 	}
 
 	const handleOnClickSearchButton = (e) => {
@@ -39,6 +65,7 @@ function App() {
 						handleChange={handleOnChangeSearch}
 						onSearchButton={handleOnClickSearchButton}
 						showDropDown={searchDropdown}
+						filteredResults={filteredResults}
 					/>
 				</div>
 				<div id="weatherWrapper">
