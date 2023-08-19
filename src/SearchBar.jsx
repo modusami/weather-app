@@ -1,4 +1,4 @@
-function SearchBar({ location, handleChange, onSearchButton, showDropDown }) {
+function SearchBar({ location, handleChange, onSearchButton, showDropDown, filteredResults }) {
 	return (
 		<>
 			<div id="searchBar" className="container">
@@ -22,38 +22,9 @@ function SearchBar({ location, handleChange, onSearchButton, showDropDown }) {
 						/>
 						{showDropDown && (
 							<div id="searchDropDown">
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
-								<p>
-									Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
-									harum?
-								</p>
+								{filteredResults.map((result, index) => {
+									return <p key={index}>{result}</p>;
+								})}
 							</div>
 						)}
 					</div>
