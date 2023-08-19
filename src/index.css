@@ -30,6 +30,26 @@ body {
 	background: url("./assets/bgImage.jpeg");
 	background-size: cover;
 	background-position: center;
+	position: relative;
+}
+
+#footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	background-color: rgb(255, 255, 255, 0.6);
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+#footer a {
+	color: rgb(0, 0, 0);
+	text-transform: capitalize;
 }
 
 #searchIconSpan {
@@ -44,6 +64,12 @@ body {
 
 #weatherDiv {
 	padding: 20px;
+	position: relative;
+}
+
+#searchBar {
+	position: fixed;
+	top: 3%;
 }
 
 #tempRow {
