@@ -3,12 +3,7 @@ function WeatherApp({ img, temp = "0.0", scaleF, location }) {
 		<>
 			<div id="weatherApp" className="container border">
 				<div className="row">
-					<div className="col-12 text-center">
-						<h2>{location ? location : "Waiting..."}</h2>
-					</div>
-				</div>
-				<div className="row">
-					<div className="col-12">
+					<div className="col-12 text-center fs-3">
 						<span className="temp">{temp ? temp : "0.0"}</span>{" "}
 						<span className="scale">{scaleF ? "F" : "C"}</span>
 					</div>
@@ -25,6 +20,11 @@ function WeatherApp({ img, temp = "0.0", scaleF, location }) {
 							alt=""
 							className="img-fluid"
 						/>
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-12 text-center">
+						<h2>{location ? location : "Waiting..."}</h2>
 					</div>
 				</div>
 			</div>
