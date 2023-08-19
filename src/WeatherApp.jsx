@@ -24,11 +24,8 @@ function WeatherApp({ img, temp, scaleF, location }) {
 					</div>
 				</div>
 				<div className="row">
-					<div
-						id="location"
-						className="col-12 d-flex align-items-end justify-content-center text-center"
-					>
-						<h2>{location ? location : "Waiting..."}</h2>
+					<div className="col-12 d-flex align-items-end justify-content-center text-center">
+						<h2 id="location">{location ? location : "Waiting..."}</h2>
 					</div>
 				</div>
 			</div>
