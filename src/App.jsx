@@ -10,6 +10,65 @@ import rain from "./assets/rain.svg";
 import snowing from "./assets/snowing.svg";
 import sunny from "./assets/sunny.svg";
 
+function findKeyByValue(obj, value) {
+	for (const key in obj) {
+		const arr = obj[key];
+		if (arr.includes(value)) {
+			return key;
+		}
+	}
+
+	return null;
+}
+
+async function getGeocodes(city) {
+	const arrCity = city.split(",");
+	const newCity = arrCity[0]; // name of city
+	const cc = findKeyByValue(cities, city);
+
+	if (cc === null) {
+		alert(`${city} not found in the cities object`);
+		return null;
+	}
+
+	const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${newCity},,${cc}&limit=1&appid=7b91f0ba2b2ff6f044a5d5825e2e0dd7`;
+
+	try {
+		const response = await fetch(URL);
+		const responseData = await response.json();
+		// lat and long
+		if (responseData.length > 0) {
+			// lat and long
+			return [{ lat: responseData[0]["lat"], long: responseData[0]["lon"] }];
+		} else {
+			return null;
+		}
+	} catch (err) {
+		return null;
+	}
+}
+
+async function getWeather() {
+	const coords = await getGeocodes(activeLocation);
+
+	if (coords === null) return null;
+
+	const LAT = coords["lat"];
+	const LONG = coords["long"];
+
+	const URL = `https://api.openweathermap.org/data/3.0/onecall?lat=${LAT}&lon=${LONG}&exclude=daily,hourly,alerts,minutely&units=imperial&appid=7b91f0ba2b2ff6f044a5d5825e2e0dd7`;
+
+	try {
+		const response = await fetch(URL);
+		const responseData = await response.json();
+		const currentData = responseData["current"];
+		const tempF = parseFloat(currentData["temp"]);
+		return tempF;
+	} catch (err) {
+		return null;
+	}
+}
+
 function App() {
 	const [location, setLocation] = useState("");
 	const [activeLocation, setActiveLocation] = useState("");
@@ -34,27 +93,6 @@ function App() {
 		}, []);
 
 		setFilteredResults(filtered);
-	}
-
-	function findKeyByValue(obj, value) {
-		for (const key in obj) {
-			const arr = obj[key];
-			if (arr.includes(value)) {
-				return key;
-			}
-		}
-
-		return null;
-	}
-
-	function getGeocodes(city = "") {
-		const arrCity = city.split(",");
-		const newCity = arrCity[0]; // name of city
-		const cc = findKeyByValue(data, city);
-
-		const URL = `http://api.openweathermap.org/geo/1.0/direct?q=${newCity},,${cc}&limit=1&appid=7b91f0ba2b2ff6f044a5d5825e2e0dd7`;
-
-		return URL;
 	}
 
 	const handleOnClickSearchButton = (e) => {
@@ -87,11 +125,6 @@ function App() {
 						img={weeatherImages[activeWeatherImg]}
 					/>
 				</div>
-				<p>
-					<a href={getGeocodes(activeLocation)} target="__blank">
-						click
-					</a>
-				</p>
 			</div>
 		</>
 	);
