@@ -146,6 +146,15 @@ function App() {
 					/>
 				</div>
 			</div>
+
+			<footer id="footer">
+				<p>
+					&copy; 2023 Your Company. All rights reserved. |{" "}
+					<a href="https://www.github.com/modusami" target="__blank">
+						My Github
+					</a>
+				</p>
+			</footer>
 		</>
 	);
 }
