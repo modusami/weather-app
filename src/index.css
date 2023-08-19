@@ -45,6 +45,7 @@ body {
 	color: black;
 	font-weight: bold;
 	font-size: 16px;
+	text-align: center;
 }
 
 #footer a {
@@ -163,5 +164,9 @@ img {
 
 	#tempRow {
 		font-size: 32px;
+	}
+
+	#location {
+		font-size: 18px;
 	}
 }
