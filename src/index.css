@@ -70,6 +70,9 @@ body {
 #searchBar {
 	position: fixed;
 	top: 3%;
+	z-index: 9999;
+	left: 50%;
+	transform: translate(-50%, 0%);
 }
 
 #tempRow {
@@ -87,6 +90,7 @@ body {
 	transform: translate(-50%, -50%);
 	background-color: rgb(255, 255, 255, 0.7);
 	border-radius: 8px;
+	z-index: 999;
 }
 
 img {
@@ -111,7 +115,7 @@ img {
 	position: absolute;
 	top: 100%;
 	left: 0;
-	z-index: 99;
+	z-index: 9999;
 	background-color: white;
 	width: 100%;
 	max-height: 250px;
