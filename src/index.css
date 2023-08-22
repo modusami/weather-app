@@ -5,10 +5,6 @@
 	line-height: 1.5;
 	font-weight: 400;
 
-	color-scheme: light dark;
-	color: rgba(255, 255, 255, 0.87);
-	background-color: #242424;
-
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
@@ -20,6 +16,7 @@ body {
 	color: inherit;
 	min-height: 100vh;
 	font-family: "Poppins", sans-serif;
+	color: black;
 }
 
 #root {
@@ -153,13 +150,6 @@ img {
 
 #searchDropDown p:active {
 	transform: scale(0.99);
-}
-
-@media (prefers-color-scheme: light) {
-	:root {
-		color: #213547;
-		background-color: #ffffff;
-	}
 }
 
 @media screen and (max-width: 580px) {
