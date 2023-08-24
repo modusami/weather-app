@@ -31,4 +31,4 @@ The Weather App is a modern web application built using Vite, React, Bootstrap, 
 
 -   (GitHub: [modusami](https://github.com/modusami))
 
-For more details, feel free to visit the [live demo](https://modusami.github.io/weather-app) or [GitHub repository](https://github.com/modusami/weather-app).
+For more details, feel free to visit the [live demo](https://funny-pika-3c289c.netlify.app/) or [GitHub repository](https://github.com/modusami/weather-app).
